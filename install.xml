@@ -1,69 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
-<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
-<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.0.1.xsd">
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
 	<header>
-		<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
-		<title lang="en">Annual Stars</title>
-		<description lang="en">Users get a star for each year of their membership.</description>
-		<author-notes lang="en">This MOD was originally a phpBB 2.0 MOD by drathbun. It can be found here: http://www.phpbb.com/community/viewtopic.php?t=384941  The star image is also taken from that MOD. It was created by Dave Rathbun.  I recreated it for phpBB 3.0, as i needed if for my board.  Don't forget to refresh your imagesets after installation. </author-notes>
+		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (phpBB version) at phpbbmodders.net"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Annual Stars]]></title>
+		<description lang="en"><![CDATA[Users get a star for each year of their membership.]]></description>
+		<author-notes lang="en"><![CDATA[This MOD was originally a phpBB 2.0 MOD by drathbun. The star image is also taken from that MOD. It was created by Dave Rathbun. Don't forget to refresh your imagesets after installation.]]></author-notes>
 		<author-group>
 			<author>
-				<realname>Igor Wiedler</realname>
-				<email>evil@phpbbmodders.net</email>
-				<username>evil3</username>
-				<homepage>http://phpbbmodders.net</homepage>
+				<realname><![CDATA[Igor Wiedler]]></realname>
+				<username><![CDATA[evil3]]></username>
+				<homepage><![CDATA[http://phpbbmodders.net]]></homepage>
+				<email><![CDATA[evil@phpbbmodders.net]]></email>
+				<contributions-group>
+					<contributions status="past" from="2007-11-11" to="2008-05-04" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<realname><![CDATA[William Jacoby]]></realname>
+				<username><![CDATA[bonelifer]]></username>
+				<homepage><![CDATA[www.phpbbmodders.net]]></homepage>
+				<contributions-group>
+					<contributions status="current" position="Developer"/>
+				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>
-			<major>1</major>
-			<minor>0</minor>
-			<revision>1</revision>
-			<release>a</release>
-		</mod-version>
+		<mod-version>1.0.1b</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>180</time>
-			<target-version>
-				<target-primary>3.0.0</target-primary>
-				<target-major allow="exact">3</target-major>
-				<target-minor allow="exact">0</target-minor>
-				<target-revision allow="after-equal">0</target-revision>
-			</target-version>
+			<target-version>3.0.8</target-version>
 		</installation>
 		<history>
 			<entry>
 				<date>2007-11-11</date>
-				<rev-version>
-					<major>1</major>
-					<minor>0</minor>
-					<revision>0</revision>
-				</rev-version>
+				<rev-version>1.0.0</rev-version>
 				<changelog lang="en">
-					<change>Initial release</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2008-04-25</date>
-				<rev-version>
-					<major>1</major>
-					<minor>0</minor>
-					<revision>1</revision>
-				</rev-version>
-				<changelog lang="en">
-					<change>Fixed ammount of years</change>
+					<change><![CDATA[Initial release]]></change>
 				</changelog>
 			</entry>
 			<entry>
 				<date>2008-05-04</date>
-				<rev-version>
-					<major>1</major>
-					<minor>0</minor>
-					<revision>1</revision>
-					<release>a</release>
-				</rev-version>
+				<rev-version>1.0.1a</rev-version>
 				<changelog lang="en">
-					<change>Added changes to the xml</change>
+					<change><![CDATA[Added changes to the xml]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2008-04-25</date>
+				<rev-version>1.0.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Fixed ammount of years]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-04-02</date>
+				<rev-version>1.0.1b</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Updated install file to the current MODX.]]></change>
 				</changelog>
 			</entry>
 		</history>
@@ -74,63 +71,62 @@
 		</copy>
 		<open src="memberlist.php">
 			<edit>
-				<find>	// Dump it out to the template
-	return array(</find>
-				<action type="before-add">	// annual stars
+				<find><![CDATA[	// Dump it out to the template
+	return array(]]></find>
+				<action type="before-add"><![CDATA[	// annual stars
 	$reg_stars = '';
 	if ($reg_years = (int) ((time() - (int) $data['user_regdate']) / 31536000))
 	{
-		$reg_stars = str_repeat($user-&gt;img('icon_annual_star', 'YEARS_OF_MEMBERSHIP'), $reg_years);
-	}</action>
+		$reg_stars = str_repeat($user->img('icon_annual_star', 'YEARS_OF_MEMBERSHIP'), $reg_years);
+	}]]></action>
 			</edit>
 			<edit>
-				<find>		'WARNINGS'		=&gt; isset($data['user_warnings']) ? $data['user_warnings'] : 0,</find>
-				<action type="after-add">		// annual stars
-		'MEMBERSHIP_STARS'	=&gt; $reg_stars,</action>
+				<find><![CDATA[		'WARNINGS'		=> isset($data['user_warnings']) ? $data['user_warnings'] : 0,]]></find>
+				<action type="after-add"><![CDATA[		// annual stars
+		'MEMBERSHIP_STARS'	=> $reg_stars,]]></action>
 			</edit>
 		</open>
 		<open src="viewtopic.php">
 			<edit>
-				<find>				'allow_pm'			=&gt; 0,
-			);</find>
-				<action type="after-add">			// annual stars
-			$user_cache[$poster_id]['reg_stars'] = '';</action>
+				<find><![CDATA[				'allow_pm'			=> 0,
+			);]]></find>
+				<action type="after-add"><![CDATA[			// annual stars
+			$user_cache[$poster_id]['reg_stars'] = '';]]></action>
 			</edit>
 			<edit>
-				<find><![CDATA[				'search'		=> ($auth->acl_get('u_search')) ? append_sid("{$phpbb_root_path}search.$phpEx", 'search_author=' . urlencode($row['username']) .'&amp;showresults=posts') : '',
-			);]]></find>
-				<action type="after-add">			// annual stars
+				<find><![CDATA[			get_user_rank($row['user_rank'], $row['user_posts'], $user_cache[$poster_id]['rank_title'], $user_cache]]></find>
+				<action type="before-add"><![CDATA[			// annual stars
 			$user_cache[$poster_id]['reg_stars'] = '';
 			if ($reg_years = (int) ((time() - (int) $row['user_regdate']) / 31536000))
 			{
-				$user_cache[$poster_id]['reg_stars'] = str_repeat($user-&gt;img('icon_annual_star', 'YEARS_OF_MEMBERSHIP'), $reg_years);
-			}</action>
+				$user_cache[$poster_id]['reg_stars'] = str_repeat($user->img('icon_annual_star', 'YEARS_OF_MEMBERSHIP'), $reg_years);
+			}]]></action>
 			</edit>
 			<edit>
-				<find>		'POSTER_AGE'		=&gt; $user_cache[$poster_id]['age'],</find>
-				<action type="after-add">		// annual stars
-		'MEMBERSHIP_STARS'	=&gt; $user_cache[$poster_id]['reg_stars'],</action>
+				<find><![CDATA[		'POSTER_AGE'		=> $user_cache[$poster_id]['age'],]]></find>
+				<action type="after-add"><![CDATA[		// annual stars
+		'MEMBERSHIP_STARS'	=> $user_cache[$poster_id]['reg_stars'],]]></action>
 			</edit>
 		</open>
 		<open src="includes/acp/acp_styles.php">
 			<edit>
-				<find>		// Execute overall actions
-		switch ($action)</find>
-				<action type="before-add">		// annual stars
-		$this-&gt;imageset_keys['icons'][] = 'icon_annual_star';</action>
+				<find><![CDATA[		// Execute overall actions
+		switch ($action)]]></find>
+				<action type="before-add"><![CDATA[		// annual stars
+		$this->imageset_keys['icons'][] = 'icon_annual_star';]]></action>
 			</edit>
 		</open>
 		<open src="language/en/common.php">
 			<edit>
-				<find>?&gt;</find>
-				<action type="before-add">// annual stars
-$lang['YEARS_OF_MEMBERSHIP'] = 'Years of membership';</action>
+				<find><![CDATA[?>]]></find>
+				<action type="before-add"><![CDATA[// annual stars
+$lang['YEARS_OF_MEMBERSHIP'] = 'Years of membership';]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/imageset/imageset.cfg">
 			<edit>
-				<find>img_icon_user_warn = icon_user_warn.gif*20*20</find>
-				<action type="after-add">img_icon_annual_star = icon_annual_star.gif</action>
+				<find><![CDATA[img_icon_user_warn = icon_user_warn.gif*20*20]]></find>
+				<action type="after-add"><![CDATA[img_icon_annual_star = icon_annual_star.gif]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/memberlist_view.html">
