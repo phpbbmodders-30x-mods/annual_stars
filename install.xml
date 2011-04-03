@@ -8,8 +8,16 @@
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
 		<title lang="en"><![CDATA[Annual Stars]]></title>
 		<description lang="en"><![CDATA[Users get a star for each year of their membership.]]></description>
-		<author-notes lang="en"><![CDATA[This MOD was originally a phpBB 2.0 MOD by drathbun. The star image is also taken from that MOD. It was created by Dave Rathbun. Don't forget to refresh your imagesets after installation.]]></author-notes>
+		<author-notes lang="en"><![CDATA[This MOD was originally a phpBB 2.0 MOD by drathbun. The star image is also taken from that MOD. It was created by Dave Rathbun.]]></author-notes>
 		<author-group>
+			<author>
+				<realname><![CDATA[William Jacoby]]></realname>
+				<username><![CDATA[bonelifer]]></username>
+				<homepage><![CDATA[www.phpbbmodders.net]]></homepage>
+				<contributions-group>
+					<contributions status="current" position="Developer"/>
+				</contributions-group>
+			</author>		
 			<author>
 				<realname><![CDATA[Igor Wiedler]]></realname>
 				<username><![CDATA[evil3]]></username>
@@ -17,14 +25,6 @@
 				<email><![CDATA[evil@phpbbmodders.net]]></email>
 				<contributions-group>
 					<contributions status="past" from="2007-11-11" to="2008-05-04" position="Developer"/>
-				</contributions-group>
-			</author>
-			<author>
-				<realname><![CDATA[William Jacoby]]></realname>
-				<username><![CDATA[bonelifer]]></username>
-				<homepage><![CDATA[www.phpbbmodders.net]]></homepage>
-				<contributions-group>
-					<contributions status="current" position="Developer"/>
 				</contributions-group>
 			</author>
 		</author-group>
@@ -43,19 +43,19 @@
 				</changelog>
 			</entry>
 			<entry>
-				<date>2008-05-04</date>
-				<rev-version>1.0.1a</rev-version>
-				<changelog lang="en">
-					<change><![CDATA[Added changes to the xml]]></change>
-				</changelog>
-			</entry>
-			<entry>
 				<date>2008-04-25</date>
 				<rev-version>1.0.1</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[Fixed ammount of years]]></change>
 				</changelog>
 			</entry>
+			<entry>
+				<date>2008-05-04</date>
+				<rev-version>1.0.1a</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Added changes to the xml]]></change>
+				</changelog>
+			</entry>			
 			<entry>
 				<date>2011-04-02</date>
 				<rev-version>1.0.1b</rev-version>
@@ -67,17 +67,21 @@
 	</header>
 	<action-group>
 		<copy>
-			<file from="root/styles/prosilver/imageset/icon_annual_star.gif" to="styles/prosilver/imageset/icon_annual_star.gif"/>
+			<file from="root/styles/prosilver/imageset/icon_annual_star.gif" to="styles/prosilver/imageset/icon_annual_star.gif" />
 		</copy>
 		<open src="memberlist.php">
 			<edit>
-				<find><![CDATA[	// Dump it out to the template
-	return array(]]></find>
+				<find><![CDATA[	// Dump it out to the template]]></find>
 				<action type="before-add"><![CDATA[	// annual stars
 	$reg_stars = '';
 	if ($reg_years = (int) ((time() - (int) $data['user_regdate']) / 31536000))
 	{
-		$reg_stars = str_repeat($user->img('icon_annual_star', 'YEARS_OF_MEMBERSHIP'), $reg_years);
+		$reg_output = sprintf($user->lang['YEAR_OF_MEMBERSHIP'], $reg_years);
+		if($reg_years > 1)
+		{
+			$reg_output = sprintf($user->lang['YEARS_OF_MEMBERSHIP'], $reg_years);
+		}
+		$reg_stars = str_repeat($user->img('icon_annual_star', $reg_output), $reg_years);
 	}]]></action>
 			</edit>
 			<edit>
@@ -99,7 +103,12 @@
 			$user_cache[$poster_id]['reg_stars'] = '';
 			if ($reg_years = (int) ((time() - (int) $row['user_regdate']) / 31536000))
 			{
-				$user_cache[$poster_id]['reg_stars'] = str_repeat($user->img('icon_annual_star', 'YEARS_OF_MEMBERSHIP'), $reg_years);
+				$reg_output = sprintf($user->lang['YEAR_OF_MEMBERSHIP'], $reg_years);
+				if($reg_years > 1)
+				{
+					$reg_output = sprintf($user->lang['YEARS_OF_MEMBERSHIP'], $reg_years);
+				}
+				$user_cache[$poster_id]['reg_stars'] = str_repeat($user->img('icon_annual_star', $reg_output), $reg_years);
 			}]]></action>
 			</edit>
 			<edit>
@@ -120,7 +129,9 @@
 			<edit>
 				<find><![CDATA[?>]]></find>
 				<action type="before-add"><![CDATA[// annual stars
-$lang['YEARS_OF_MEMBERSHIP'] = 'Years of membership';]]></action>
+$lang['LENGTH_OF_MEMBERSHIP'] = 'Years of membership';
+$lang['YEARS_OF_MEMBERSHIP'] = '%d years of membership';
+$lang['YEAR_OF_MEMBERSHIP'] = '%d year of membership';]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/imageset/imageset.cfg">
@@ -132,9 +143,9 @@ $lang['YEARS_OF_MEMBERSHIP'] = 'Years of membership';]]></action>
 		<open src="styles/prosilver/template/memberlist_view.html">
 			<edit>
 				<find><![CDATA[			<dt>{L_JOINED}:</dt> <dd>{JOINED}</dd>]]></find>
-				<action type="after-add"><![CDATA[			<!-- IF MEMBERSHIP_STARS -->
-				<dt>{L_YEARS_OF_MEMBERSHIP}:</dt> <dd>{MEMBERSHIP_STARS}</dd>
-			<!-- ENDIF -->]]></action>
+				<action type="after-add"><![CDATA[		<!-- IF MEMBERSHIP_STARS -->
+			<dt>{L_LENGTH_OF_MEMBERSHIP}:</dt> <dd>{MEMBERSHIP_STARS}</dd>
+		<!-- ENDIF -->]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/viewtopic_body.html">
@@ -146,5 +157,9 @@ $lang['YEARS_OF_MEMBERSHIP'] = 'Years of membership';]]></action>
 			<!-- ENDIF -->]]></action>
 			</edit>
 		</open>
+		<diy-instructions lang="en"><![CDATA[*** NOTE: If you are installing via Automod you may skip to step 2 ***
+1. Make all edits to all files and upload them to your forum.    
+2. Refresh the prosilver template and imageset.
+]]></diy-instructions>		
 	</action-group>
 </mod>
