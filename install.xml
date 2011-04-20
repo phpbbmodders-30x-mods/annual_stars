@@ -28,7 +28,7 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.0.1b</mod-version>
+		<mod-version>1.0.1c</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>180</time>
@@ -63,6 +63,13 @@
 					<change><![CDATA[Updated install file to the current MODX.]]></change>
 				</changelog>
 			</entry>
+			<entry>
+				<date>2011-04-19</date>
+				<rev-version>1.0.1c</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Language fix]]></change>
+				</changelog>
+			</entry>			
 		</history>
 	</header>
 	<action-group>
@@ -131,7 +138,8 @@
 				<action type="before-add"><![CDATA[// annual stars
 $lang['LENGTH_OF_MEMBERSHIP'] = 'Years of membership';
 $lang['YEARS_OF_MEMBERSHIP'] = '%d years of membership';
-$lang['YEAR_OF_MEMBERSHIP'] = '%d year of membership';]]></action>
+$lang['YEAR_OF_MEMBERSHIP'] = '%d year of membership';
+$lang['IMG_ICON_ANNUAL_STAR']	= 'Annual star';]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/imageset/imageset.cfg">
